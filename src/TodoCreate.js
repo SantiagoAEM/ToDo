@@ -1,6 +1,6 @@
 function TodoCreate() {
     return(
-        <input type="button"/>
+       <button>+</button>
 
 
     );

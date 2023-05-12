@@ -1,7 +1,7 @@
-function TodoCounter() {
+function TodoCounter({completadas, total}) {
     return(
             <h1>
-                Has completado 3 de 5 Tareas
+                Has completado {completadas} de {total} Tareas
             </h1>
 
     );

@@ -1,11 +1,10 @@
-import logo from './platzi.webp';
 import { TodoCounter } from './TodoCounter';
 import { TodoSearch } from './TodoSearch';
 import { TodoList } from './TodoList';
 import { TodoItem } from './TodoItem';
 import { TodoCreate } from './TodoCreate';
 import React from 'react';
-import './App.css';
+
 
 const baseTareas = [
   {text:'Bañarse', completed:true},

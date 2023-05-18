@@ -1,8 +1,8 @@
-function TodoItem() {
+function TodoItem(props) {
     return(
       <li>
-        <span>V</span>
-        <p>Estudiar react</p>
+        <span>V {props.completadas}</span>
+        <p>{props.text}</p>
         <span>X</span>
       </li>
     );

@@ -22,7 +22,7 @@ function App() {
   return (
     <React.Fragment>
 
-      <TodoCounter completadas={4} total={10}/>
+<TodoCounter completadas={4} total={10}/>
       <TodoSearch />
       <TodoCreate />
   

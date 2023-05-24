@@ -6,6 +6,10 @@ import { TodoCreate } from './TodoCreate';
 import React from 'react';
 
 
+
+
+
+
 const baseTareas = [
   {text:'Bañarse', completed:true},
   {text:'Desayunar', completed:true},
@@ -20,6 +24,8 @@ function App() {
 
       <TodoCounter completadas={4} total={10}/>
       <TodoSearch />
+      <TodoCreate />
+  
 
     <TodoList>
         {baseTareas.map(todo =>(
@@ -32,10 +38,11 @@ function App() {
         )}
     </TodoList>
    
-    <TodoCreate />
   
     </React.Fragment>
   );
+
+  
 }
 
 

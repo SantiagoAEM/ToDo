@@ -15,7 +15,7 @@ const baseTareas = [
   {text:'Desayunar', completed:true},
   {text:'Estudiar React', completed:false},
   {text:'Comer', completed:false},
-  {text:'Dormir', completed:false}
+  {text:'Dormir', completed:true}
 ];
 
 function App() {

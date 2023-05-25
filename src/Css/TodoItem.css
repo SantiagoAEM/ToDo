@@ -1,4 +1,4 @@
-.todo-item {
+.TodoItem {
     width:80%;
     list-style: none;
     display: flex;
@@ -10,10 +10,19 @@
     box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
     padding-inline-start: 0;
   }
+.Item-check{
+  background: url("../Assets/gray-circle.svg") no-repeat;
+  background-size: 90%;
+  background-position: center center;
+  width: 2.5em;
+  height: 2.5em;
+  border: none;
+  cursor: pointer;
 
+}
 
-  .todo-item .check {
-    background: url("../Assets/circle.svg") no-repeat;
+  .Item-check--active {
+    background: url("../Assets/circle-check.svg") no-repeat;
     background-size: 90%;
     background-position: center center;
     width: 2.5em;
@@ -22,7 +31,7 @@
     cursor: pointer;
   }
 
-  .todo-item .close-item {
+  .TodoItem .Item-close {
     background: url("../Assets/x.svg") no-repeat;
     background-size: 90%;
     background-position: center center;
@@ -32,8 +41,12 @@
     cursor: pointer;
   }
   
-  .todo-item .close-item:hover {
+  .TodoItem .Item-close:hover {
     background: url("../Assets/x-red.svg") no-repeat;
     background-size: 90%;
     background-position: center center;
   }
+  .TodoItem-p--complete{
+  text-decoration: line-through;
+   
+  } 

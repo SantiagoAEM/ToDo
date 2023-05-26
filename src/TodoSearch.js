@@ -1,14 +1,8 @@
 import  react from 'react';
 import "./Css/TodoSearch.css"
 
-function TodoSearch() {
-    const [state,setState] = react.useState('');
-    console.log('buscando...' + state);
-    
-    
-    
-    
-    
+function TodoSearch({state,setState}) {
+   
     return(
              
             <form className="form" action="https://www.google.com/search" method="GET" target="_blank">

@@ -6,41 +6,50 @@ import { TodoCreate } from './TodoCreate';
 import React from 'react';
 
 
-
-
-
-
 const baseTareas = [
   {text:'Bañarse', completed:true},
   {text:'Desayunar', completed:true},
   {text:'Estudiar React', completed:false},
   {text:'Comer', completed:false},
-  {text:'Dormir', completed:true}
+  {text:'Dormir', completed:true},
+  {text:'Despetar', completed:true}
+ 
 ];
 
 function App() {
-  return (
-    <React.Fragment>
+  const[stateTarea, setTarea] = React.useState(baseTareas);
 
-<TodoCounter completadas={4} total={10}/>
-      <TodoSearch />
-      <TodoCreate />
+  const tareasCompletadas = stateTarea.filter(todo => todo.completed).length;
+  const totalTareas = stateTarea.length;
+
+  const [state,setState] = React.useState('');
+  console.log('buscando...' + state);
   
+          return (
+              <React.Fragment>
 
-    <TodoList>
-        {baseTareas.map(todo =>(
-        <TodoItem 
-          key={todo.text}
-          text={todo.text}
-          completadas={todo.completed}
-          />)
+                <TodoCounter completadas={tareasCompletadas} total={totalTareas}/>
+                      <TodoSearch 
+                        state={state}
+                        setState={setState}
+                      />
+                      <TodoCreate />
+                  
 
-        )}
-    </TodoList>
-   
-  
-    </React.Fragment>
-  );
+                    <TodoList>
+                        {baseTareas.map(todo =>(
+                          <TodoItem 
+                            key={todo.text}
+                            text={todo.text}
+                            completadas={todo.completed}
+                          />)
+
+                        )}
+                      </TodoList>
+            
+            
+              </React.Fragment>
+            );
 
   
 }

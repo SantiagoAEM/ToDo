@@ -24,6 +24,11 @@ function App() {
 
   const [state,setState] = React.useState('');
   console.log('buscando...' + state);
+
+  const tareaBuscada = stateTarea.filter( //funcion de busqueda
+      (todo) => { 
+                  return todo.text.toLowerCase().includes(state.toLocaleLowerCase());} //to lower convierte a minisculas el string
+      );
   
           return (
               <React.Fragment>
@@ -37,7 +42,7 @@ function App() {
                   
 
                     <TodoList>
-                        {baseTareas.map(todo =>(
+                        {tareaBuscada.map(todo =>(
                           <TodoItem 
                             key={todo.text}
                             text={todo.text}

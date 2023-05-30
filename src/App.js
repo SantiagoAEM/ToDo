@@ -8,32 +8,52 @@ import React from 'react';
 
 const baseTareas = [
   {text:'Bañarse', completed:true},
-  {text:'Desayunar', completed:true},
+  {text:'Desayunar', completed:false},
   {text:'Estudiar React', completed:false},
   {text:'Comer', completed:false},
-  {text:'Dormir', completed:true},
+  {text:'Dormir', completed:false},
   {text:'Despetar', completed:true}
  
 ];
 
 function App() {
   const[stateTarea, setTarea] = React.useState(baseTareas);
-
   const tareasCompletadas = stateTarea.filter(todo => todo.completed).length;
   const totalTareas = stateTarea.length;
-
   const [state,setState] = React.useState('');
-  console.log('buscando...' + state);
-
   const tareaBuscada = stateTarea.filter( //funcion de busqueda
       (todo) => { 
-                  return todo.text.toLowerCase().includes(state.toLocaleLowerCase());} //to lower convierte a minisculas el string
+                  return todo.text.toLowerCase().includes(state.toLocaleLowerCase());} //tolower convierte a minisculas el string
       );
-  
+
+
+  const completeTodo = (text) => {
+    const newTodos = [...stateTarea];
+    const todoIndex = newTodos.findIndex(
+      (todo) => todo.text == text
+    );
+    newTodos[todoIndex].completed = true;
+    setTarea(newTodos);
+  };
+
+
+
+
+  const deleteTodo = (text) => {
+    const newTodos = [...stateTarea];
+    const todoIndex = newTodos.findIndex(
+      (todo) => todo.text == text
+    );
+    newTodos.splice(todoIndex,1);
+    setTarea(newTodos);
+  };
+
+
+
           return (
               <React.Fragment>
 
-                <TodoCounter completadas={tareasCompletadas} total={totalTareas}/>
+                <TodoCounter completed={tareasCompletadas} total={totalTareas}/>
                       <TodoSearch 
                         state={state}
                         setState={setState}
@@ -46,7 +66,10 @@ function App() {
                           <TodoItem 
                             key={todo.text}
                             text={todo.text}
-                            completadas={todo.completed}
+                            completed={todo.completed}
+                            onComplete={() => completeTodo(todo.text)} //encapsulamos una funcion en otra de lo contrario react marcara error
+                            onDelete={() => deleteTodo(todo.text)}
+
                           />)
 
                         )}

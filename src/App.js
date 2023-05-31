@@ -5,7 +5,7 @@ import { TodoItem } from './TodoItem';
 import { TodoCreate } from './TodoCreate';
 import React from 'react';
 
-
+/* 
 const baseTareas = [
   {text:'Bañarse', completed:true},
   {text:'Desayunar', completed:false},
@@ -14,10 +14,25 @@ const baseTareas = [
   {text:'Dormir', completed:false},
   {text:'Despetar', completed:true}
  
-];
+]; */
 
 function App() {
-  const[stateTarea, setTarea] = React.useState(baseTareas);
+  const localStorageTodos = localStorage.getItem('TODOS_V1');
+
+  let parsedTodos;
+  
+  if (!localStorageTodos) {
+    localStorage.setItem('TODOS_V1', JSON.stringify([]));
+    parsedTodos = [];
+  } else {
+    parsedTodos = JSON.parse(localStorageTodos);
+  }
+
+  const[stateTarea, setTarea] = React.useState(parsedTodos);
+
+  
+
+
   const tareasCompletadas = stateTarea.filter(todo => todo.completed).length;
   const totalTareas = stateTarea.length;
   const [state,setState] = React.useState('');
@@ -26,6 +41,10 @@ function App() {
                   return todo.text.toLowerCase().includes(state.toLocaleLowerCase());} //tolower convierte a minisculas el string
       );
 
+const saveTodos = (newTodos) =>{
+  localStorage.setItem('TODOS_V1', JSON.stringify(newTodos));
+  setTarea(newTodos);
+}
 
   const completeTodo = (text) => {
     const newTodos = [...stateTarea];
@@ -33,7 +52,7 @@ function App() {
       (todo) => todo.text == text
     );
     newTodos[todoIndex].completed = true;
-    setTarea(newTodos);
+ saveTodos(newTodos);
   };
 
 
@@ -45,7 +64,7 @@ function App() {
       (todo) => todo.text == text
     );
     newTodos.splice(todoIndex,1);
-    setTarea(newTodos);
+    saveTodos(newTodos);
   };
 
 

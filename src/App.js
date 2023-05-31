@@ -1,8 +1,4 @@
-import { TodoCounter } from './Components/TodoCounter';
-import { TodoSearch } from './Components/TodoSearch';
-import { TodoList } from './Components/TodoList';
-import { TodoItem } from './Components/TodoItem';
-import { TodoCreate } from './Components/TodoCreate';
+import { AppUI } from './AppUI';
 import React from 'react';
 import { useLocalStorage } from './Custom-hooks/localStorage';
 
@@ -16,6 +12,7 @@ const baseTareas = [
   {text:'Despetar', completed:true}
  
 ]; */
+
 
 function App() {
   const[stateTarea, saveTodos] = useLocalStorage('TODOS_V1',[]);
@@ -46,33 +43,17 @@ function App() {
     saveTodos(newTodos);
   };
 
-          return (
-              <React.Fragment>
-
-                <TodoCounter completed={tareasCompletadas} total={totalTareas}/>
-                      <TodoSearch 
-                        state={state}
-                        setState={setState}
-                      />
-                      <TodoCreate />
-                      
-                      <TodoList>
-                        {tareaBuscada.map(todo =>(
-                          <TodoItem 
-                            key={todo.text}
-                            text={todo.text}
-                            completed={todo.completed}
-                            onComplete={() => completeTodo(todo.text)} //encapsulamos una funcion en otra de lo contrario react marcara error
-                            onDelete={() => deleteTodo(todo.text)}
-
-                          />)
-
-                        )}
-                      </TodoList>
-            
-            
-              </React.Fragment>
-            );
+         return(
+                  <AppUI
+                    tareasCompletadas={tareasCompletadas}
+                    totalTareas={totalTareas}
+                    state={state}
+                    setState={setState}
+                    tareaBuscada={tareaBuscada}
+                    completeTodo={completeTodo}
+                    deleteTodo={deleteTodo}
+                    />
+                );
 
   
 }

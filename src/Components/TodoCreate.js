@@ -1,4 +1,4 @@
-import "./Css/TodoCreate.css"
+import "../Css/TodoCreate.css"
 
 function TodoCreate() {
     return(

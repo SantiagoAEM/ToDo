@@ -1,5 +1,5 @@
-import  react from 'react';
-import "./Css/TodoSearch.css"
+
+import "../Css/TodoSearch.css"
 
 function TodoSearch({state,setState}) {
    

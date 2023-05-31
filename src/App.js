@@ -1,9 +1,10 @@
-import { TodoCounter } from './TodoCounter';
-import { TodoSearch } from './TodoSearch';
-import { TodoList } from './TodoList';
-import { TodoItem } from './TodoItem';
-import { TodoCreate } from './TodoCreate';
+import { TodoCounter } from './Components/TodoCounter';
+import { TodoSearch } from './Components/TodoSearch';
+import { TodoList } from './Components/TodoList';
+import { TodoItem } from './Components/TodoItem';
+import { TodoCreate } from './Components/TodoCreate';
 import React from 'react';
+import { useLocalStorage } from './Custom-hooks/localStorage';
 
 /* 
 const baseTareas = [
@@ -17,22 +18,7 @@ const baseTareas = [
 ]; */
 
 function App() {
-  const localStorageTodos = localStorage.getItem('TODOS_V1');
-
-  let parsedTodos;
-  
-  if (!localStorageTodos) {
-    localStorage.setItem('TODOS_V1', JSON.stringify([]));
-    parsedTodos = [];
-  } else {
-    parsedTodos = JSON.parse(localStorageTodos);
-  }
-
-  const[stateTarea, setTarea] = React.useState(parsedTodos);
-
-  
-
-
+  const[stateTarea, saveTodos] = useLocalStorage('TODOS_V1',[]);
   const tareasCompletadas = stateTarea.filter(todo => todo.completed).length;
   const totalTareas = stateTarea.length;
   const [state,setState] = React.useState('');
@@ -41,33 +27,24 @@ function App() {
                   return todo.text.toLowerCase().includes(state.toLocaleLowerCase());} //tolower convierte a minisculas el string
       );
 
-const saveTodos = (newTodos) =>{
-  localStorage.setItem('TODOS_V1', JSON.stringify(newTodos));
-  setTarea(newTodos);
-}
 
   const completeTodo = (text) => {
     const newTodos = [...stateTarea];
     const todoIndex = newTodos.findIndex(
-      (todo) => todo.text == text
+      (todo) => todo.text === text
     );
     newTodos[todoIndex].completed = true;
  saveTodos(newTodos);
   };
 
-
-
-
   const deleteTodo = (text) => {
     const newTodos = [...stateTarea];
     const todoIndex = newTodos.findIndex(
-      (todo) => todo.text == text
+      (todo) => todo.text === text
     );
     newTodos.splice(todoIndex,1);
     saveTodos(newTodos);
   };
-
-
 
           return (
               <React.Fragment>
@@ -78,9 +55,8 @@ const saveTodos = (newTodos) =>{
                         setState={setState}
                       />
                       <TodoCreate />
-                  
-
-                    <TodoList>
+                      
+                      <TodoList>
                         {tareaBuscada.map(todo =>(
                           <TodoItem 
                             key={todo.text}

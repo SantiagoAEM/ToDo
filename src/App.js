@@ -15,7 +15,7 @@ const baseTareas = [
 
 
 function App() {
-  const[stateTarea, saveTodos] = useLocalStorage('TODOS_V1',[]);
+  const{item:stateTarea, saveItem:saveTodos, loading, error} = useLocalStorage('TODOS_V1',[]);
   const tareasCompletadas = stateTarea.filter(todo => todo.completed).length;
   const totalTareas = stateTarea.length;
   const [state,setState] = React.useState('');
@@ -41,10 +41,13 @@ function App() {
     );
     newTodos.splice(todoIndex,1);
     saveTodos(newTodos);
+    
   };
-
+  console.log("hohhohoh");
          return(
                   <AppUI
+                    loading={loading}
+                    error={error}
                     tareasCompletadas={tareasCompletadas}
                     totalTareas={totalTareas}
                     state={state}
@@ -55,7 +58,6 @@ function App() {
                     />
                 );
 
-  
 }
 
 

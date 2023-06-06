@@ -7,6 +7,8 @@ import React from 'react';
 
 
 function AppUI({
+    loading,
+    error,
     tareasCompletadas,
     totalTareas,
     state,
@@ -29,6 +31,9 @@ function AppUI({
                 <TodoCreate />
                 
                 <TodoList>
+                  {loading && <p>Cargando...</p>}
+                  {error && <p>Huebo un error en la carga de datos</p>}
+                  {(!loading && tareaBuscada.length === 0) && <p>Agrega una nueva tarea</p>}
                   {tareaBuscada.map(todo =>(
                     <TodoItem 
                       key={todo.text}

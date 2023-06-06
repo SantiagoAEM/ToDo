@@ -1,9 +1,13 @@
 import { TodoCounter } from './Components/TodoCounter';
 import { TodoSearch } from './Components/TodoSearch';
-import { TodoList } from './Components/TodoList';
-import { TodoItem } from './Components/TodoItem';
+import { TodoList } from   './Components/TodoList';
+import { TodoItem } from   './Components/TodoItem';
 import { TodoCreate } from './Components/TodoCreate';
+import {TodosLoading} from './Components/TodosLoading';
+import { TodosError } from './Components/TodosError';
+import { EmptyTodos } from './Components/EmptyTodos';
 import React from 'react';
+
 
 
 function AppUI({
@@ -31,9 +35,10 @@ function AppUI({
                 <TodoCreate />
                 
                 <TodoList>
-                  {loading && <p>Cargando...</p>}
-                  {error && <p>Huebo un error en la carga de datos</p>}
-                  {(!loading && tareaBuscada.length === 0) && <p>Agrega una nueva tarea</p>}
+                  {loading && <TodosLoading/>}
+                  {error && <TodosError/>}
+                  {(!loading && tareaBuscada.length === 0) && <EmptyTodos />}
+                  
                   {tareaBuscada.map(todo =>(
                     <TodoItem 
                       key={todo.text}

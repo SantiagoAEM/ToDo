@@ -7,19 +7,18 @@ import {TodosLoading} from './Components/TodosLoading';
 import { TodosError } from './Components/TodosError';
 import { EmptyTodos } from './Components/EmptyTodos';
 import React from 'react';
-
-
+import { TodoContext } from './Components/TodoContext';
 
 function AppUI({
-    loading,
-    error,
-    tareasCompletadas,
-    totalTareas,
-    state,
-    setState,
-    tareaBuscada,
-    completeTodo,
-    deleteTodo,
+    // loading,
+    // error,
+    // tareasCompletadas,
+    // totalTareas,
+    // state,
+    // setState,
+    // tareaBuscada,
+    // completeTodo,
+    // deleteTodo,
   
 }) {
     
@@ -27,30 +26,37 @@ function AppUI({
     return (
         <React.Fragment>
 
-          <TodoCounter completed={tareasCompletadas} total={totalTareas}/>
-                <TodoSearch 
-                  state={state}
-                  setState={setState}
-                />
+          <TodoCounter />
+                <TodoSearch/>
                 <TodoCreate />
                 
-                <TodoList>
-                  {loading && <TodosLoading/>}
-                  {error && <TodosError/>}
-                  {(!loading && tareaBuscada.length === 0) && <EmptyTodos />}
-                  
-                  {tareaBuscada.map(todo =>(
-                    <TodoItem 
-                      key={todo.text}
-                      text={todo.text}
-                      completed={todo.completed}
-                      onComplete={() => completeTodo(todo.text)} //encapsulamos una funcion en otra de lo contrario react marcara error
-                      onDelete={() => deleteTodo(todo.text)}
+                <TodoContext.Consumer>
+                  {({
+                          loading,
+                          error,
+                          tareaBuscada,
+                          completeTodo,
+                          deleteTodo,                    
+                    })=>(
+                      <TodoList>
+                      {loading && <TodosLoading/>}
+                      {error && <TodosError/>}
+                      {(!loading && tareaBuscada.length === 0) && <EmptyTodos />}
+                      
+                      {tareaBuscada.map(todo =>(
+                        <TodoItem 
+                          key={todo.text}
+                          text={todo.text}
+                          completed={todo.completed}
+                          onComplete={() => completeTodo(todo.text)} //encapsulamos una funcion en otra de lo contrario react marcara error
+                          onDelete={() => deleteTodo(todo.text)}
 
-                    />)
+                        />)
 
+                      )}
+                    </TodoList>
                   )}
-                </TodoList>
+                </TodoContext.Consumer>
       
       
         </React.Fragment>

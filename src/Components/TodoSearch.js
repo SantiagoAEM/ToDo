@@ -1,8 +1,13 @@
-
+import React from 'react';
 import "../Css/TodoSearch.css"
+import { TodoContext } from './TodoContext';
 
-function TodoSearch({state,setState}) {
+function TodoSearch() {
    
+    const{
+        state,
+        setState,
+} = React.useContext(TodoContext)
     return(
              
             <form className="form" action="https://www.google.com/search" method="GET" target="_blank">

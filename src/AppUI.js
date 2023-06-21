@@ -9,19 +9,16 @@ import { EmptyTodos } from './Components/EmptyTodos';
 import React from 'react';
 import { TodoContext } from './Components/TodoContext';
 
-function AppUI({
-    // loading,
-    // error,
-    // tareasCompletadas,
-    // totalTareas,
-    // state,
-    // setState,
-    // tareaBuscada,
-    // completeTodo,
-    // deleteTodo,
+function AppUI(){
+const {
   
-}) {
-    
+    loading,
+    error,
+    tareaBuscada,
+    completeTodo,
+    deleteTodo,                    
+} = React.useContext(TodoContext);
+
       
     return (
         <React.Fragment>
@@ -29,15 +26,7 @@ function AppUI({
           <TodoCounter />
                 <TodoSearch/>
                 <TodoCreate />
-                
-                <TodoContext.Consumer>
-                  {({
-                          loading,
-                          error,
-                          tareaBuscada,
-                          completeTodo,
-                          deleteTodo,                    
-                    })=>(
+                               
                       <TodoList>
                       {loading && <TodosLoading/>}
                       {error && <TodosError/>}
@@ -51,12 +40,10 @@ function AppUI({
                           onComplete={() => completeTodo(todo.text)} //encapsulamos una funcion en otra de lo contrario react marcara error
                           onDelete={() => deleteTodo(todo.text)}
 
-                        />)
-
-                      )}
+                        />
+                        ))}
                     </TodoList>
-                  )}
-                </TodoContext.Consumer>
+                
       
       
         </React.Fragment>
@@ -64,4 +51,3 @@ function AppUI({
 
   } 
   export {AppUI};      
-         

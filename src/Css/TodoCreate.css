@@ -1,50 +1,96 @@
-.create{
-   
-    width:100%;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-    padding: 0;
-    /* height: 4rem;
-    margin: 0.4rem 0; */
-    /* box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px; */
-    padding-inline-start: 0;
-
-}
-
-.form2{
-    display:flex;
-    border:1px solid #DFE1E5;
-    border-radius:50px;
-    max-width:660px;
-  
-
-}
-.input-add{
-    width: 350px;
-    height: 29.6px ;
-}
-.create .add-item {
-    background: url("../Assets/add.svg") no-repeat;
-    background-size: 50%;
-    background-position: center center;
-    background-color: #4992d6;
-    width: 2.2em;
-    height: 2.2em;
-    border: none;
-    cursor: pointer;
-
-    display:flex;
-    border-radius:0 100px 100px 0;
-    padding-left:8px;
-    padding-right:8px;
-   
-    border:1px solid #e9d944;
-    margin:-1px;
-    outline:none;
-    flex:0 0 auto;
-    fill:#fff;
-    cursor:pointer;
+.icon-btn {
+    width: 50px;
+    height: 50px;
+    border: 1px solid #ffd3d3;
+    background: white;
+    border-radius: 25px;
+    overflow: hidden;
+    position: relative;
+    transition: width 0.2s ease-in-out;
+    font-weight: 500;
+    font-family: inherit;
+    margin-left: 10%;
   }
   
+  .add-btn:hover {
+    width: 120px;
+  }
+  
+  .add-btn::before,
+  .add-btn::after {
+    transition: width 0.2s ease-in-out, border-radius 0.2s ease-in-out;
+    content: "";
+    position: absolute;
+    height: 4px;
+    width: 10px;
+    top: calc(50% - 2px);
+    background:  rgb(250, 87, 103);
+  }
+  
+  .add-btn::after {
+    right: 14px;
+    overflow: hidden;
+    border-top-right-radius: 2px;
+    border-bottom-right-radius: 2px;
+  }
+  
+  .add-btn::before {
+    left: 14px;
+    border-top-left-radius: 2px;
+    border-bottom-left-radius: 2px;
+  }
+  
+  .icon-btn:focus {
+    outline: none;
+  }
+  
+  .btn-txt {
+    opacity: 0;
+    transition: opacity 0.2s;
+  }
+  
+  .add-btn:hover::before,
+  .add-btn:hover::after {
+    width: 4px;
+    border-radius: 2px;
+  }
+  
+  .add-btn:hover .btn-txt {
+    opacity: 1;
+  }
+  
+  .add-icon::after,
+  .add-icon::before {
+    transition: all 0.2s ease-in-out;
+    content: "";
+    position: absolute;
+    height: 20px;
+    width: 2px;
+    top: calc(50% - 10px);
+    background:  rgb(250, 87, 103);
+    overflow: hidden;
+  }
+  
+  .add-icon::before {
+    left: 22px;
+    border-top-left-radius: 2px;
+    border-bottom-left-radius: 2px;
+  }
+  
+  .add-icon::after {
+    right: 22px;
+    border-top-right-radius: 2px;
+    border-bottom-right-radius: 2px;
+  }
+  
+  .add-btn:hover .add-icon::before {
+    left: 15px;
+    height: 4px;
+    top: calc(50% - 2px);
+  }
+  
+  .add-btn:hover .add-icon::after {
+    right: 15px;
+    height: 4px;
+    top: calc(50% - 2px);
+  }

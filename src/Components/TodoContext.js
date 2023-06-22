@@ -10,6 +10,7 @@ function TodoProvider({ children }) {
     const tareasCompletadas = stateTarea.filter(todo => todo.completed).length;
     const totalTareas = stateTarea.length;
     const [state,setState] = React.useState('');
+    const [openModal,setOpenModal] = React.useState(true);
     const tareaBuscada = stateTarea.filter( //funcion de busqueda
         (todo) => { 
                     return todo.text.toLowerCase().includes(state.toLocaleLowerCase());} //tolower convierte a minisculas el string
@@ -46,6 +47,8 @@ function TodoProvider({ children }) {
             tareaBuscada,
             completeTodo,
             deleteTodo,
+            openModal,
+            setOpenModal,
         }}>
       {children}
     </TodoContext.Provider>

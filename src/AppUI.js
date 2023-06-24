@@ -9,6 +9,7 @@ import { EmptyTodos } from './Components/EmptyTodos';
 import React from 'react';
 import { TodoContext } from './Components/TodoContext';
 import { Modal } from './Components/Modal';
+import {TodoForm} from './Components/TodoForm'
 
 function AppUI(){
 const {
@@ -29,10 +30,12 @@ const {
           <TodoCounter />
                 <TodoSearch/>
 
-                <TodoCreate />
+                <TodoCreate 
+                  setOpenModal={setOpenModal}  
+                />
                     {openModal && (
                           <Modal>
-                            La funcionalidad de agregar todos
+                            <TodoForm/>
                           </Modal>
                     )}
                     

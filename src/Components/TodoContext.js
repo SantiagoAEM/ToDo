@@ -16,7 +16,14 @@ function TodoProvider({ children }) {
                     return todo.text.toLowerCase().includes(state.toLocaleLowerCase());} //tolower convierte a minisculas el string
         );
   
-  
+    const addTodo =(text)=>{
+      const newTodos = [...stateTarea];
+      newTodos.push({
+        text,
+        completed:false,
+      });
+      saveTodos(newTodos);
+    }      
     const completeTodo = (text) => {
       const newTodos = [...stateTarea];
       const todoIndex = newTodos.findIndex(
@@ -49,6 +56,7 @@ function TodoProvider({ children }) {
             deleteTodo,
             openModal,
             setOpenModal,
+            addTodo
         }}>
       {children}
     </TodoContext.Provider>

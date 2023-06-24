@@ -19,7 +19,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Koulen&family=Lato&family=Nunito&family=Playfair+Display:ital@1&family=Prata&family=Raleway:ital,wght@1,100&family=Roboto&family=Roboto+Condensed&family=Teko&display=swap');
 
 .form-button{
-
 font-family: Roboto, sans-serif;
 font-weight: 0;
 font-size: 12px;
@@ -27,7 +26,7 @@ color: #fff;
 padding: 10px 30px;
 box-shadow: rgba(0, 0, 0, 0.15) 0px 5px 15px 0px;
 border-radius: 50px;
-transition : 197ms;
+transition : 500ms;
 transform: translateY(0);
 cursor: pointer;
 }
@@ -41,8 +40,8 @@ cursor: pointer;
     background-color:#dbc500;
     border: solid #dbc500 2px;
 }
-.form-button:hover{
 
+.form-button:hover{
 transition : 197ms;
 padding: 10px 22px;
 transform : translateY(-0px);

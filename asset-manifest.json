@@ -1,0 +1,17 @@
+{
+  "files": {
+    "main.css": "/SantiagoAEM/ToDo/static/css/main.057ca52f.css",
+    "main.js": "/SantiagoAEM/ToDo/static/js/main.153615ad.js",
+    "index.html": "/SantiagoAEM/ToDo/index.html",
+    "static/media/x-red.svg": "/SantiagoAEM/ToDo/static/media/x-red.139e2423c0c58fda0a43.svg",
+    "static/media/x.svg": "/SantiagoAEM/ToDo/static/media/x.eb0580540d6e03cd2d52.svg",
+    "static/media/circle-check.svg": "/SantiagoAEM/ToDo/static/media/circle-check.337bb861b9e4211753fb.svg",
+    "static/media/gray-circle.svg": "/SantiagoAEM/ToDo/static/media/gray-circle.79f65d1ddcc42545e3c4.svg",
+    "main.057ca52f.css.map": "/SantiagoAEM/ToDo/static/css/main.057ca52f.css.map",
+    "main.153615ad.js.map": "/SantiagoAEM/ToDo/static/js/main.153615ad.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.057ca52f.css",
+    "static/js/main.153615ad.js"
+  ]
+}

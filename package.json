@@ -38,6 +38,6 @@
   "homepage": "https://github.com/SantiagoAEM/ToDo",
 
   "devDependencies": {
-    "gh-pages": "^5.0.0"
+    "gh-pages": "^5.0.0" 
   }
 }

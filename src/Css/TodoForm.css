@@ -1,8 +1,22 @@
+.formAdd {
+    width: 90%;
+    max-width: 300px;
+    background-color: #fff;
+    padding: 33px 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+
 .txtarea{
     resize: none;
-    border: 0;
+    border: 0.5px solid #858585;;
 
 }
+textarea:focus {
+    outline-color: #61DAFA;
+  }
 .formContainer {
     width:100%;
     display: flex;

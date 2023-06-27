@@ -24,7 +24,7 @@ function TodoForm(){
   
 
 return(
-    <form onSubmit={onSubmit}>
+    <form onSubmit={onSubmit} className="formAdd">
        
         <textarea placeholder="Escribe tu nueva tarea" className="txtarea"
          rows="8" cols="40" required
